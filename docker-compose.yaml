@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  catalog:
+    image: catalog
+    build:
+      context: .
+      dockerfile: Catalog/Dockerfile
+    ports:
+      - "5181:80"
+      - "7110:443"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
