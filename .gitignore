@@ -1,0 +1,114 @@
+# Build results
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# Blueprints of Visual Studio for IntelliSense and user specific files
+.vs/
+.vscode/
+*.user
+*.suo
+*.userprefs
+
+# Cache files for Visual Studio
+*.[Cc]ache
+*.[Rr]esharper
+*.[Tt]est[Rr]esult*
+
+# NuGet Packages
+*.nupkg
+# The packages folder can be ignored because of Package Restore
+**/[Pp]ackages/*
+# except build/, which is used as an MSBuild target.
+!**/[Pp]ackages/build/
+# Uncomment if necessary however generally it will be regenerated when needed
+#!**/[Pp]ackages/ReSharper*
+
+# NuGet v3's project.json files produces more ignoreable files
+*.nuget.props
+*.nuget.targets
+
+# Others
+sql/
+*.ndf
+*.mdf
+*.ldf
+Repository/
+
+# TeamCity - JetBrains TeamCity Continuous Integration Server
+_TeamCity*
+
+# DotCover is a Code Coverage Tool
+*.dotCover
+
+# AxoCover is a Code Coverage Tool
+.axoCover/*
+!.axoCover/settings.json
+
+# Visual Studio code coverage results
+*.coverage
+*.coveragexml
+
+# SQL Server files
+*.mdf
+*.ldf
+*.ndf
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Visual Studio for Mac
+.idea/
+
+# User-specific files
+*.rsuser
+*.docstates
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# VS Code directories
+.history
+.settings
+.tasks
+
+# Tooling
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.tmproj
+*.tmproject
+*.bk
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# OS generated files
+.DS_Store*
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# End of File
