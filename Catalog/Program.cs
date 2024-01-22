@@ -1,4 +1,11 @@
+using Microsoft.EntityFrameworkCore;
+using Catalog.Repositories; 
+
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<GameItemRepository>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("CatalogConnection")));
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -6,6 +13,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+// Apply migrations
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<GameItemRepository>();
+    dbContext.Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
