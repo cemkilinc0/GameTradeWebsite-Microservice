@@ -8,7 +8,7 @@ namespace Catalog.Repositories
         {
         }
 
-        public DbSet<GameItem> Item { get; set; }
+        public DbSet<GameItem> GameItems { get; set; }
     }
 }
 

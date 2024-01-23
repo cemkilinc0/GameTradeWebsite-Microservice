@@ -17,8 +17,16 @@ var app = builder.Build();
 // Apply migrations
 using (var scope = app.Services.CreateScope())
 {
-    var dbContext = scope.ServiceProvider.GetRequiredService<GameItemRepository>();
-    dbContext.Database.Migrate();
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<GameItemRepository>();
+        context.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("-------" + ex);
+    }
 }
 
 // Configure the HTTP request pipeline.
