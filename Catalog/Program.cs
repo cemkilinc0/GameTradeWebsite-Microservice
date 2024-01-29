@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Catalog.Repositories; 
 using Catalog.Data;
-using Repositories.Interfaces;
+using Catalog.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 

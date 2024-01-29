@@ -1,5 +1,5 @@
 using System;
-using Repositories.Interfaces;
+using Catalog.Repositories.Interfaces;
 using Catalog.Entities;
 using Catalog.Data;
 
@@ -19,6 +19,16 @@ namespace Catalog.Repositories
             _context.GameItems.Add(gameItem);
             _context.SaveChanges();
             return gameItem;
+        }
+
+        public IEnumerable<GameItem> GetAll()
+        {
+            return _context.GameItems.ToList();
+        }
+
+        public GameItem GetById(int id)
+        {
+            return _context.GameItems.FirstOrDefault(item => item.ItemId == id);
         }
 
         public GameItem Update(GameItem gameItem)

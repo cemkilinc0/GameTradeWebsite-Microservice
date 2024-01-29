@@ -1,6 +1,6 @@
 using Catalog.Entities;
 
-namespace Repositories.Interfaces
+namespace Catalog.Repositories.Interfaces
 {    public interface IGameItemRepository
     {
         GameItem Create(GameItem gameItem);
