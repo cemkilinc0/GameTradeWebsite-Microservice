@@ -12,19 +12,20 @@ namespace Catalog.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Item",
+                name: "GameItems",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    ItemId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    GameName = table.Column<string>(type: "text", nullable: true),
+                    GameName = table.Column<string>(type: "text", nullable: false),
                     Category = table.Column<string>(type: "text", nullable: true),
                     Image = table.Column<string>(type: "text", nullable: true),
-                    Price = table.Column<decimal>(type: "numeric", nullable: false)
+                    Price = table.Column<decimal>(type: "numeric", nullable: false),
+                    UserId = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Item", x => x.Id);
+                    table.PrimaryKey("PK_GameItems", x => x.ItemId);
                 });
         }
 
@@ -32,7 +33,7 @@ namespace Catalog.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Item");
+                name: "GameItems");
         }
     }
 }
