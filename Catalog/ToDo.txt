@@ -1,4 +1,4 @@
--Add ItemName to GameItem entity
+-Make repository cleaner. Maybe use LINQ?
 -Make it async
 -Error handling
 -Unit tests
