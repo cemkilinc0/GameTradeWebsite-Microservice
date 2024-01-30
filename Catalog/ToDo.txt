@@ -1,0 +1,5 @@
+-Add ItemName to GameItem entity
+-Make it async
+-Error handling
+-Unit tests
+

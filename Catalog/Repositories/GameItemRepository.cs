@@ -33,8 +33,19 @@ namespace Catalog.Repositories
 
         public GameItem Update(GameItem gameItem)
         {
-            _context.GameItems.Update(gameItem);
-            _context.SaveChanges();
+            var existingItem = _context.GameItems.Find(gameItem.ItemId);
+            if(existingItem != null)
+            {
+                existingItem.ItemName = gameItem.ItemName;
+                existingItem.GameName = gameItem.GameName;
+                existingItem.Category = gameItem.Category;
+                existingItem.Image  = gameItem.Image;
+                existingItem.Price = gameItem.Price;
+                existingItem.UserId = gameItem.UserId;
+                existingItem.Amount = gameItem.Amount;
+                _context.SaveChanges();
+            }
+
             return gameItem;
         }
 

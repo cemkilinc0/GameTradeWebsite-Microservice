@@ -9,11 +9,14 @@ namespace Catalog.Entities
         [Key]
         public int ItemId { get; set; }
         [Required]
-        public string? GameName { get; set;}
-        public string? Category{ get; set; }
-        public string? Image { get; set; }
-        public decimal Price { get; set; }
+        public string ItemName { get; set; }
         [Required]
-        public string? UserId { get; set;}
+        public string GameName { get; set;}
+        public string Category{ get; set; }
+        public string Image { get; set; }
+        public decimal Price { get; set; }
+        public int Amount { get; set; }
+        [Required]
+        public string UserId { get; set;}
     }
 }
