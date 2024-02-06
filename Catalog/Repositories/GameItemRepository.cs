@@ -2,6 +2,7 @@ using System;
 using Catalog.Repositories.Interfaces;
 using Catalog.Entities;
 using Catalog.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Catalog.Repositories
 {
@@ -16,30 +17,30 @@ namespace Catalog.Repositories
             _logger = logger;
         }
 
-        public GameItem Create(GameItem gameItem)
+        public async Task<GameItem> Create(GameItem gameItem)
         {
             _logger.LogInformation($"GameItem with id. {gameItem.ItemId} getting created");
             _context.GameItems.Add(gameItem);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return gameItem;
         }
 
-        public IEnumerable<GameItem> GetAll()
+        public async Task<IEnumerable<GameItem>> GetAll()
         {
             _logger.LogInformation("Getting all game items");
-            return _context.GameItems.ToList();
+            return await _context.GameItems.ToListAsync();
         }
 
-        public GameItem GetById(int id)
+        public async Task<GameItem> GetById(int id)
         {
             _logger.LogInformation($"Fetching game item with id: {id}");
-            return _context.GameItems.FirstOrDefault(item => item.ItemId == id);
+            return await _context.GameItems.FirstOrDefaultAsync(item => item.ItemId == id);
         }
 
-        public GameItem Update(GameItem gameItem)
+        public async Task<GameItem> Update(GameItem gameItem)
         {
             _logger.LogInformation($"Updating game item with id: {gameItem.ItemId}");
-            var existingItem = _context.GameItems.Find(gameItem.ItemId);
+            var existingItem = await _context.GameItems.FindAsync(gameItem.ItemId);
             if(existingItem != null)
             {
                 existingItem.ItemName = gameItem.ItemName;
@@ -49,20 +50,20 @@ namespace Catalog.Repositories
                 existingItem.Price = gameItem.Price;
                 existingItem.UserId = gameItem.UserId;
                 existingItem.Amount = gameItem.Amount;
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
 
-            return gameItem;
+            return existingItem;
         }
 
-        public void Delete(int gameId)
+        public async Task Delete(int gameId)
         {
             _logger.LogInformation($"Deleting game item with id: {gameId}");
-            var gameItem = _context.GameItems.Find(gameId);
+            var gameItem = await _context.GameItems.FindAsync(gameId);
             if (gameItem != null)
             {
                 _context.GameItems.Remove(gameItem);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
         }
     }

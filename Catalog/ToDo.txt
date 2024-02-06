@@ -1,5 +1,6 @@
 -Make repository cleaner. Maybe use LINQ?
--Make it async
--Error handling
+-Make it async - done
+-error handling - done
 -Unit tests
+-Decide item rules (username lenght, uniqueness etc.)
 

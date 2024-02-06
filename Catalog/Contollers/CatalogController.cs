@@ -1,7 +1,7 @@
-
 using Catalog.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Catalog.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Catalog.Controllers
 {
@@ -19,18 +19,18 @@ namespace Catalog.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
             _logger.LogInformation("Getting all game items");
-            var items = _gameItemRepository.GetAll();
+            var items = await _gameItemRepository.GetAll();
             return Ok(items);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
             _logger.LogInformation($"Getting game item with id: {id}");
-            var item = _gameItemRepository.GetById(id);
+            var item = await _gameItemRepository.GetById(id);
             if (item == null)
             {
                 _logger.LogWarning($"Game item with id: {id} not found.");
@@ -40,15 +40,15 @@ namespace Catalog.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(GameItem gameItem)
+        public async Task<IActionResult> Create(GameItem gameItem)
         {
             _logger.LogInformation($"Game item with name: {gameItem.ItemName} created");
-            var newItem = _gameItemRepository.Create(gameItem);
+            var newItem = await _gameItemRepository.Create(gameItem);
             return CreatedAtAction(nameof(GetById), new { id = newItem.ItemId }, newItem);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, GameItem gameItem)
+        public async Task<IActionResult> Update(int id, GameItem gameItem)
         {
             if (id != gameItem.ItemId)
             {
@@ -57,29 +57,29 @@ namespace Catalog.Controllers
             }
 
             _logger.LogInformation($"Updating game item with Id: {id}");
-            var existingItem = _gameItemRepository.GetById(id);
+            var existingItem = await _gameItemRepository.GetById(id);
             if (existingItem == null)
             {
                 _logger.LogWarning($"Game item with Id: {id} not found for update.");
                 return NotFound();
             }
 
-            _gameItemRepository.Update(gameItem);
+            await _gameItemRepository.Update(gameItem);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             _logger.LogInformation($"Attempting to delete game item with Id: {id}");
-            var item = _gameItemRepository.GetById(id);
+            var item = await _gameItemRepository.GetById(id);
             if (item == null)
             {
                 _logger.LogWarning($"Game item with Id: {id} not found for deletion.");
                 return NotFound();
             }
 
-            _gameItemRepository.Delete(id);
+            await _gameItemRepository.Delete(id);
             return NoContent();
         }
     }
