@@ -40,6 +40,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
+else
+{
+    app.UseExceptionHandler("/error");
+}
+
 app.UseHttpsRedirection();
 app.UseRouting(); 
 app.MapControllers(); 
