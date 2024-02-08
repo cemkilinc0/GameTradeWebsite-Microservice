@@ -1,3 +1,7 @@
+- For Create method:
+    - Include game name check. Maybe place a combobox in UI instead of textbox?
+    - Same with platform.
+
 -Make repository cleaner. Maybe use LINQ?
 -Make it async - done
 -error handling - done

@@ -46,10 +46,10 @@ namespace Catalog.Repositories
                 existingItem.ItemName = gameItem.ItemName;
                 existingItem.GameName = gameItem.GameName;
                 existingItem.Category = gameItem.Category;
-                existingItem.Image  = gameItem.Image;
+                existingItem.ImageURL  = gameItem.ImageURL;
                 existingItem.Price = gameItem.Price;
-                existingItem.UserId = gameItem.UserId;
-                existingItem.Amount = gameItem.Amount;
+                existingItem.OwnerUserId = gameItem.OwnerUserId;
+                existingItem.Price = gameItem.Price;
                 await _context.SaveChangesAsync();
             }
 
