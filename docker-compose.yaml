@@ -5,7 +5,7 @@ services:
     image: catalog
     build:
       context: .
-      dockerfile: Catalog/Dockerfile
+      dockerfile: src/Catalog/Dockerfile
     ports:
       - "5181:80"
       - "7110:443"

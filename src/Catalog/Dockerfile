@@ -7,10 +7,10 @@ EXPOSE 443
 # Use SDK image to build the project file
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["Catalog/Catalog.csproj", "Catalog/"]
-RUN dotnet restore "Catalog/Catalog.csproj"
+COPY ["src/Catalog/Catalog.csproj", "src/Catalog/"]
+RUN dotnet restore "src/Catalog/Catalog.csproj"
 COPY . .
-WORKDIR "/src/Catalog"
+WORKDIR "/src/src/Catalog"
 RUN dotnet build "Catalog.csproj" -c Release -o /app/build
 
 FROM build AS publish
