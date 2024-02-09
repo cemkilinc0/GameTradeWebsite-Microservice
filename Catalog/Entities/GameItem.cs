@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Catalog.Entities
 {
     public class GameItem{
-         [Key]
+    [Key]
     public int ItemId { get; set; }
 
     [Required]

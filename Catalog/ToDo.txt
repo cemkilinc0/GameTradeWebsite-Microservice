@@ -6,5 +6,5 @@
 -Make it async - done
 -error handling - done
 -Unit tests
--Decide item rules (username lenght, uniqueness etc.)
+-Decide item rules (username lenght, uniqueness etc.) - done
 
