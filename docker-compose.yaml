@@ -2,6 +2,7 @@ version: '3.4'
 
 services:
   catalog:
+    container_name: catalog
     image: catalog
     build:
       context: .
@@ -14,6 +15,8 @@ services:
       - ASPNETCORE_URLS=http://+:80
 
   frontend:
+    container_name: frontend
+    image: frontend
     build:
       context: ./vue-frontend
       dockerfile: ./Dockerfile
