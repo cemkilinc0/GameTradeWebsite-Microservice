@@ -1,0 +1,3 @@
+-Write all http methods.
+-Proper UI.
+ 

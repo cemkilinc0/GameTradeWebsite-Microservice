@@ -2,9 +2,10 @@
     - Include game name check. Maybe place a combobox in UI instead of textbox?
     - Same with platform.
 
--Make repository cleaner. Maybe use LINQ?
 -Make it async - done
 -error handling - done
--Unit tests
+-Unit tests - later
 -Decide item rules (username lenght, uniqueness etc.) - done
+-Proper ımageURL's.
+-More http methods for search bar.
 
