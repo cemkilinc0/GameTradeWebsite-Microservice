@@ -10,6 +10,14 @@ builder.Services.AddDbContext<CatalogDbContext>(options =>
 
 builder.Services.AddScoped<IGameItemRepository, GameItemRepository>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("MyCorsPolicy",
+        builder => builder.WithOrigins("http://localhost:8081") // Replace with the client app's URL
+                          .AllowAnyMethod()
+                          .AllowAnyHeader());
+});
+
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddControllers();
@@ -17,6 +25,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+app.UseCors("MyCorsPolicy");
 
 // Apply migrations
 using (var scope = app.Services.CreateScope())

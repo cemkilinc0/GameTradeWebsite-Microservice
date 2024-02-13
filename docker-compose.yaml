@@ -13,6 +13,13 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
 
+  frontend:
+    build:
+      context: ./vue-frontend
+      dockerfile: ./Dockerfile
+    ports:
+      - "8081:80"
+
   postgres:
     image: postgres:latest
     container_name: catalogdb
