@@ -1,0 +1,31 @@
+Basket Microservice resposibilities:
+
+-Add Items: Add game items to the basket.
+-Remove Items: Remove items from the basket.
+-Get Basket Contents: Retrieve the current items in the basket.
+-Clear Basket: Remove all items from the basket.
+-Basket Checkout Process: (Optional) Initiate a process to turn basket items into an order.
+
+ToDO:
+
+-Set up database (postgres)
+-Create Entities/Repositories
+-Create Service layer/ API endpoints
+-Set up Docker
+-Set up Cors
+-Decide communication way to other microservices
+
+Considerations:
+
+Data Consistency: Ensure that your Basket service is consistent with the Catalog service. 
+For example, if an item is removed from the catalog, it should also be handled appropriately in any baskets.
+
+Database Choice: Your choice of database might affect how you define your entities. 
+For instance, a NoSQL database might lead to a different design compared to a relational database.
+
+Concurrency Handling: Consider how you will handle concurrent modifications to the basket 
+by the same user (e.g., using optimistic concurrency control).
+Integration with Catalog Service: Decide how you'll keep item details 
+(like name, price, description) up to date in the Basket service. 
+You might just store ItemId and fetch details as needed, or synchronize certain item details 
+into your Basket service for performance reasons.

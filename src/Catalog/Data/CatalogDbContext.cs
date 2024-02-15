@@ -11,7 +11,5 @@ namespace Catalog.Data
         }
 
         public DbSet<GameItem> GameItems { get; set; }
-
-        // ... other DbSets for other entities
     }
 }
