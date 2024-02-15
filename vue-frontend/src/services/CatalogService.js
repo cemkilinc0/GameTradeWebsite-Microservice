@@ -4,7 +4,6 @@ const API_URL = 'http://localhost:5181/Catalog'
 
 export default {
     async getAllItems() {
-      console.log("---------- getAllItems is called!");
       return axios.get(API_URL);
     },
   
@@ -12,9 +11,9 @@ export default {
       return axios.get(`${API_URL}/${id}`);
     },
 
-    // async createItem(id) {
-    //     return axios.get(`${API_URL}/${id}`);
-    //   },
+    async createItem(gameItem) {
+        return axios.get(`${API_URL}/Create`, gameItem);
+      },
   
     // ... other user related API calls
   };
