@@ -8,9 +8,9 @@ Basket Microservice resposibilities:
 
 ToDO:
 
--Set up database (postgres)
--Create Entities/Repositories
--Create Service layer/ API endpoints
++Set up database (redis)
++Create Entities/Repositories
++Create Service layer/ API endpoints
 -Set up Docker
 -Set up Cors
 -Decide communication way to other microservices
@@ -19,9 +19,6 @@ Considerations:
 
 Data Consistency: Ensure that your Basket service is consistent with the Catalog service. 
 For example, if an item is removed from the catalog, it should also be handled appropriately in any baskets.
-
-Database Choice: Your choice of database might affect how you define your entities. 
-For instance, a NoSQL database might lead to a different design compared to a relational database.
 
 Concurrency Handling: Consider how you will handle concurrent modifications to the basket 
 by the same user (e.g., using optimistic concurrency control).

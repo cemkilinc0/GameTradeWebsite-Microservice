@@ -13,6 +13,8 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
+    depends_on:
+      - postgres
 
   basket:
     container_name: basket
@@ -25,6 +27,8 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
+    depends_on:
+      - basket.data
 
   frontend:
     container_name: frontend
@@ -47,6 +51,12 @@ services:
       - pgdata:/var/lib/postgresql/data
     ports:
       - "5433:5432"
+  
+  basket.data:
+    image: redis
+    ports:
+      - "6379:6379"
+
 
 volumes:
   pgdata:

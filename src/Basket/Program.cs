@@ -1,11 +1,25 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using StackExchange.Redis;
+using Basket.Repositories;
+using Basket.Repositories.Interfaces;
 using Basket.Entities;
 using Basket.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<BasketDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("BasketConnection")));
+// Configure Redis
+builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
+{
+    var configuration = builder.Configuration;
+    var connectionString = configuration["ConnectionStrings:RedisConnection"];
+    return ConnectionMultiplexer.Connect(connectionString);
+});
+
+//register Repository
+builder.Services.AddScoped<IBasketRepository, RedisBasketRepository>();
+
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
