@@ -1,6 +1,6 @@
 using StackExchange.Redis;
 using Newtonsoft.Json;
-using Basket.Repositories.Interfaces
+using Basket.Repositories.Interfaces;
 using Basket.Entities;
 
 namespace Basket.Repositories
@@ -11,7 +11,7 @@ namespace Basket.Repositories
 
         public RedisBasketRepository(IConnectionMultiplexer redis)
         {
-            _database = _redis.GetDatabase();
+            _database = redis.GetDatabase();
         }
 
         public async Task<CustomerBasket> GetBasket(string customerId)
@@ -24,8 +24,7 @@ namespace Basket.Repositories
         {
             var created = await _database.StringSetAsync(basket.UserId, JsonConvert.SerializeObject(basket));
             if(!created) return null;
-            return await GetBasketAsync(basket.UserId);
-
+            return await GetBasket(basket.UserId);
         }
 
         public async Task<bool> DeleteBasket(string customerId)

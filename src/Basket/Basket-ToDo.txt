@@ -11,9 +11,10 @@ ToDO:
 +Set up database (redis)
 +Create Entities/Repositories
 +Create Service layer/ API endpoints
--Set up Docker
++Set up Docker
 -Set up Cors
 -Decide communication way to other microservices
+-Set up logger
 
 Considerations:
 
