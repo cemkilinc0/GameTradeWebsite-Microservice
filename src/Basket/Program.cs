@@ -8,6 +8,10 @@ using Basket.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//Configure logging
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+
 // Configure Redis
 builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
 {

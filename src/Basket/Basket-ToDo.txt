@@ -14,7 +14,7 @@ ToDO:
 +Set up Docker
 -Set up Cors
 -Decide communication way to other microservices
--Set up logger
++Set up logger
 
 Considerations:
 
