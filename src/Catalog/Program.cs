@@ -1,7 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Catalog.Repositories; 
-using Catalog.Data;
 using Catalog.Repositories.Interfaces;
+using Catalog.Data;
+using Catalog.Events;
+using RabbitMQ.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +20,15 @@ builder.Services.AddCors(options =>
                           .AllowAnyMethod()
                           .AllowAnyHeader());
 });
+
+//Set up rabbitMQ connection
+builder.Services.AddSingleton<IConnection>(sp =>
+{
+    var factory = new ConnectionFactory() { HostName = "rabbitmq" };
+    return factory.CreateConnection();
+});
+
+builder.Services.AddSingleton<IRabbitMQPublisher, RabbitMQPublisher>();
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
