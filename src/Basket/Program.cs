@@ -6,6 +6,7 @@ using Basket.Repositories;
 using Basket.Repositories.Interfaces;
 using Basket.Entities;
 using Basket.Data;
+using Basket.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,8 +18,16 @@ builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
     return ConnectionMultiplexer.Connect(connectionString);
 });
 
+//Set up rabbitMQ connection
+builder.Services.AddSingleton<IConnection>(sp =>
+{
+    var factory = new ConnectionFactory() { HostName = "rabbitmq" };
+    return factory.CreateConnection();
+});
+
 //register Repository
 builder.Services.AddScoped<IBasketRepository, RedisBasketRepository>();
+builder.Services.AddSingleton<IRabbitMQConsumer, RabbitMQConsumer>();
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

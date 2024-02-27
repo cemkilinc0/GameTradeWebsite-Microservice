@@ -1,9 +1,12 @@
-﻿namespace Shared;
-
-public class ItemIpdatedIntegrationEvent
+﻿
+namespace Shared
 {
-    public int ItemId{ get; set; }
-    public string ItemName { get; set; }
-    public int Price { get; set; }
-    public int QuantityAvailable { get; set; }
+    public class ItemUpdatedIntegrationEvent
+    {
+        public int ItemId{ get; set; }
+        public string ItemName { get; set; }
+        public decimal Price { get; set; }
+        public int QuantityAvailable { get; set; }
+    }
 }
+

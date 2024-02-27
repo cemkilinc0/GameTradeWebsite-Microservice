@@ -1,4 +1,6 @@
+using Shared;
+
 public interface IRabbitMQConsumer
 {
-        void ConsumeItemUpdate();
+        void ConsumeItemUpdate(ItemUpdatedIntegrationEvent event);
 }

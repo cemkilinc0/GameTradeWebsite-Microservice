@@ -2,6 +2,7 @@ using System;
 using Catalog.Repositories.Interfaces;
 using Catalog.Entities;
 using Catalog.Data;
+using Catalog.Events;
 using Microsoft.EntityFrameworkCore;
 
 namespace Catalog.Repositories
@@ -9,10 +10,12 @@ namespace Catalog.Repositories
     public class GameItemRepository : IGameItemRepository
     {
         private readonly CatalogDbContext _context;
+        private readonly IRabbitMQPublisher _rabbitMQPublisher;
         private readonly ILogger<GameItemRepository> _logger;
 
-        public GameItemRepository(CatalogDbContext context, ILogger<GameItemRepository> logger)
+        public GameItemRepository(CatalogDbContext context, IRabbitMQPublisher publisher, ILogger<GameItemRepository> logger)
         {
+            _rabbitMQPublisher = publisher;
             _context = context;
             _logger = logger;
         }
@@ -52,6 +55,8 @@ namespace Catalog.Repositories
                 existingItem.Price = gameItem.Price;
                 await _context.SaveChangesAsync();
             }
+
+            _rabbitMQPublisher.PublishItemUpdate(gameItem);
 
             return existingItem;
         }
