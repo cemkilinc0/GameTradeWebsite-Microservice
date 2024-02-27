@@ -5,6 +5,10 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog", "src\Catalog\Catalog.csproj", "{4E5FDD22-D904-493D-9B35-325ADA56C80C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9EFD7F6A-EB1B-4BA6-A8E8-F1AEDFA547FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket", "src\Basket\Basket.csproj", "{0AF9D3B1-3B6D-40AF-A2FD-96357B55A129}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,12 @@ Global
 		{4E5FDD22-D904-493D-9B35-325ADA56C80C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E5FDD22-D904-493D-9B35-325ADA56C80C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E5FDD22-D904-493D-9B35-325ADA56C80C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AF9D3B1-3B6D-40AF-A2FD-96357B55A129}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AF9D3B1-3B6D-40AF-A2FD-96357B55A129}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AF9D3B1-3B6D-40AF-A2FD-96357B55A129}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AF9D3B1-3B6D-40AF-A2FD-96357B55A129}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0AF9D3B1-3B6D-40AF-A2FD-96357B55A129} = {9EFD7F6A-EB1B-4BA6-A8E8-F1AEDFA547FF}
 	EndGlobalSection
 EndGlobal
