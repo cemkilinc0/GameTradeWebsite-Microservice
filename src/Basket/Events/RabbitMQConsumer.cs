@@ -1,5 +1,4 @@
 using RabbitMQ.Client;
-using RabbitMQ.Client.Events;
 using System.Text;
 using System.Text.Json;
 using Shared;
@@ -15,8 +14,8 @@ namespace Basket.Events
             _logger = logger;
             _logger.LogInformation("Creating basketUpdateQueue");
 
-            var channel = connection.CreateModel();
-            channel.QueueDeclare(queue: "basketUpdateQueue",
+            this.channel = connection.CreateModel();
+            this.channel.QueueDeclare(queue: "basketUpdateQueue",
                                 durable: false,
                                 exclusive: false,
                                 autoDelete: false,
@@ -31,6 +30,10 @@ namespace Basket.Events
                 var updateEvent = JsonSerializer.Deserialize<ItemUpdatedIntegrationEvent>(message);
                 ConsumeItemUpdate(updateEvent);
             };
+
+            this.channel.BasicConsume(queue: "basketUpdateQueue",
+                            autoAck: true,
+                            consumer: consumer);
 
         }
         public void ConsumeItemUpdate(ItemUpdatedIntegrationEvent updateEvent)
