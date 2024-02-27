@@ -13,7 +13,7 @@ ToDO:
 +Create Service layer/ API endpoints
 +Set up Docker
 -Set up Cors
--Decide communication way to other microservices
++Decide communication way to other microservices (RabbitMQ)
 +Set up logger
 
 Considerations:

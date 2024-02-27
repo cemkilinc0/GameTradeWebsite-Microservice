@@ -2,12 +2,14 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
 WORKDIR /app
 
-# Copy the CSPROJ file and restore any NuGet packages
+# Copy the CSPROJ files and restore any NuGet packages
 COPY src/Basket/Basket.csproj ./Basket/
+COPY src/Shared/Shared.csproj ./Shared/ 
 RUN dotnet restore Basket/Basket.csproj
 
 # Copy the rest of the code and build the app
 COPY src/Basket/ ./Basket/
+COPY src/Shared/ ./Shared/ 
 RUN dotnet publish Basket/Basket.csproj -c Release -o out
 
 # Generate the runtime image

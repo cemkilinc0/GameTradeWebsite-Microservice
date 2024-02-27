@@ -1,7 +1,7 @@
 using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
 using System.Text;
 using System.Text.Json;
-using Basket.Events;
 using Shared;
 
 namespace Basket.Events
@@ -10,7 +10,6 @@ namespace Basket.Events
     {
         private readonly IModel channel;
         private readonly ILogger<RabbitMQConsumer> _logger;
-
         public RabbitMQConsumer(IConnection connection, ILogger<RabbitMQConsumer> logger)
         {
             _logger = logger;
@@ -34,10 +33,9 @@ namespace Basket.Events
             };
 
         }
-        public void ConsumeItemUpdate(ItemUpdatedIntegrationEvent event)
+        public void ConsumeItemUpdate(ItemUpdatedIntegrationEvent updateEvent)
         {
             _logger.LogInformation("Consuming event from basketUpdateQueue");
-
         }
     }
 }

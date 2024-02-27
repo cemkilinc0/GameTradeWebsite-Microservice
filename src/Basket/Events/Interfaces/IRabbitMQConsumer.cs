@@ -1,6 +1,10 @@
 using Shared;
 
-public interface IRabbitMQConsumer
+namespace Basket.Events
 {
-        void ConsumeItemUpdate(ItemUpdatedIntegrationEvent event);
+        public interface IRabbitMQConsumer
+        {
+                void ConsumeItemUpdate(ItemUpdatedIntegrationEvent updateEvent);
+        }
 }
+
