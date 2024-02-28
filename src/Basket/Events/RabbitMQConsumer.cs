@@ -22,24 +22,34 @@ namespace Basket.Events
                                 autoDelete: false,
                                 arguments: null);
 
-            var consumer = new EventingBasicConsumer(channel);
-            consumer.Received += (model, ea) =>
+            _logger.LogInformation("Created queue basketUpdateQueue");
+
+            try
             {
-                _logger.LogInformation("Recieved event from basketUpdateQueue");
-                var body = ea.Body.ToArray();
-                var message = Encoding.UTF8.GetString(body);
-                var updateEvent = JsonSerializer.Deserialize<ItemUpdatedIntegrationEvent>(message);
-                ConsumeItemUpdate(updateEvent);
-            };
+                var consumer = new AsyncEventingBasicConsumer(this.channel);
+                consumer.Received += async (model, ea) =>
+                {
+                    _logger.LogInformation("Recieved event from basketUpdateQueue");
+                    var body = ea.Body.ToArray();
+                    var message = Encoding.UTF8.GetString(body);
+                    var updateEvent = JsonSerializer.Deserialize<ItemUpdatedIntegrationEvent>(message);
+                    await ConsumeItemUpdate(updateEvent);
+                };
 
-            this.channel.BasicConsume(queue: "basketUpdateQueue",
-                            autoAck: true,
-                            consumer: consumer);
-
+                
+                this.channel.BasicConsume(queue: "basketUpdateQueue",
+                                        autoAck: true,
+                                        consumer: consumer);
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError($"Error occured before Recieved Event trigger: {ex}",ex);
+            }        
         }
-        public void ConsumeItemUpdate(ItemUpdatedIntegrationEvent updateEvent)
+        public async Task ConsumeItemUpdate(ItemUpdatedIntegrationEvent updateEvent)
         {
             _logger.LogInformation("Consuming event from basketUpdateQueue");
+            
         }
     }
 }

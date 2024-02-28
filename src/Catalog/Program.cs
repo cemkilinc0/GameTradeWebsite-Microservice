@@ -24,7 +24,7 @@ builder.Services.AddCors(options =>
 //Set up rabbitMQ connection
 builder.Services.AddSingleton<IConnection>(sp =>
 {
-    var factory = new ConnectionFactory() { HostName = "rabbitmq" };
+    var factory = new ConnectionFactory() { HostName = "rabbitmq", DispatchConsumersAsync = true };
     return factory.CreateConnection();
 });
 

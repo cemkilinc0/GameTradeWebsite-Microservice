@@ -4,7 +4,7 @@ namespace Basket.Events
 {
         public interface IRabbitMQConsumer
         {
-                void ConsumeItemUpdate(ItemUpdatedIntegrationEvent updateEvent);
+                Task ConsumeItemUpdate(ItemUpdatedIntegrationEvent updateEvent);
         }
 }
 
