@@ -1,6 +1,5 @@
 # Game Item Trading Website
-This is a microservice website project for trading video game items. It is created for learning web technologies and microservices and not to become a professional website.
-It is still in development.
+This project is a microservice-based website focused on trading video game items, developed as a personal project to learn web technologies and microservices. It is not intended for professional use but rather serves as a hands-on learning project. The project is currently in its development phase.
 
 ## Prerequisites
 - .NET 8.0
