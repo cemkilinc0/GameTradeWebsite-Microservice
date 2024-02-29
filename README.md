@@ -7,7 +7,7 @@ This project is a microservice-based website focused on trading video game items
 - Use `docker-compose up --build` at the root to start the project.
 
 ## Used technologies
-- .Net Core 8.0
+- .Net 8.0
 - Vue.js 
 - EF core
 - Redis
