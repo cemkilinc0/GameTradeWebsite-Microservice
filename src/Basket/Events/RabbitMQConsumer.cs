@@ -3,6 +3,7 @@ using System.Text;
 using System.Text.Json;
 using Shared;
 using RabbitMQ.Client.Events;
+using Basket.Repositories;
 
 namespace Basket.Events
 {
@@ -49,7 +50,8 @@ namespace Basket.Events
         public async Task ConsumeItemUpdate(ItemUpdatedIntegrationEvent updateEvent)
         {
             _logger.LogInformation("Consuming event from basketUpdateQueue");
-            
+            //Find all baskets with the item id and update them
+
         }
     }
 }
