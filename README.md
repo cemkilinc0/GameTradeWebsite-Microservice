@@ -5,7 +5,7 @@ It is still in development.
 ## Prerequisites
 - .NET 8.0
 - Docker Desktop
-Use `docker-compose up --build` at the root to start the project.
+- Use `docker-compose up --build` at the root to start the project.
 
 ## Used technologies
 -.Net Core 8.0
