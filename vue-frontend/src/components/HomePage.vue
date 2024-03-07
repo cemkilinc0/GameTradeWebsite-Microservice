@@ -18,7 +18,7 @@
 import CatalogService from "@/services/CatalogService"
 
 export default {
-  name: 'HelloWorld',
+  name: 'HomePage',
   props: {
     msg: String
   },
